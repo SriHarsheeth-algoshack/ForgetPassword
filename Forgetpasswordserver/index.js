@@ -52,7 +52,7 @@ app.post('/forget-password', (req, res) => {
       
       var mailOptions = {
         from: 'sriharsheethj@gmail.com',
-        to: 'sriharsheethj@gmail.com', 
+        to:email,  
         subject: 'Reset your password',
         text: `http://localhost:3000/reset-password/${user._id}/${token}`
       };

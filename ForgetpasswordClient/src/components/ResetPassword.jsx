@@ -5,27 +5,27 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const ResetPassword=()=>{
     const [password, setPassword] = useState()
+   
+
     const {id, token} = useParams()
-  console.log("reset password")
+
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post(`http://localhost:3001/reset-password/${id}/${token}`, { password })
-            .then(result => {
-              
-                navigate('/login')
-              
-             
-                
-            })
-            .catch(err => console.log(err))
-    }
+        .then(result => { 
+            if(result.data.Status==="success"){
+             navigate('/login')
+            } 
+         })
+         .catch(err => console.log(err))
+ }
     return(<div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-    <div className="bg-white р-3 rounded w-25 p-2">
+     <div className="bg-white rounded p-4 col-lg-4 col-md-5 col-sm-5 col-xs-5">
         <h2>Reset-Password</h2>
         <form onSubmit={handleSubmit}>
-          
+      
            
             <div className="mb-3">
                 <label htm1For="email">
@@ -41,9 +41,11 @@ const ResetPassword=()=>{
                 />
             </div>
          
-            <button type="submit" className="btn btn-success w-100 rounded-0">
+            <div className="d-flex justify-content-center align-items-center ">
+           <button type="submit" className="btn btn-primary w-75 rounded-3">
                 Update
             </button>
+           </div>
         </form>
     </div>
 </div>

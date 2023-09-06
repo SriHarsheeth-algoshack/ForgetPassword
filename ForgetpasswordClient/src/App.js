@@ -9,7 +9,7 @@ import ForgetPassword from './components/ForgetPassword'
 import ResetPassword from './components/ResetPassword'
 
 function App() {
-  // const [count, setCount] = useState(0)
+
 
   return (
     <>
